@@ -1,0 +1,14 @@
+class Solution {
+  public:
+    long long int minOperations(int N) {
+        // Code here
+        int terms=N/2;
+        long long int a=N-1;
+        long long int sum=0;
+        if(N%2!=0)
+        sum=((terms)*(a+2))/2;
+        else
+        sum=((terms)*(a+1))/2;
+        return sum;
+    }
+};
