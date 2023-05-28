@@ -1,0 +1,25 @@
+class Solution{
+public:
+    int getNthFromLast(Node *head, int n)
+{
+       // Your code here
+       Node *p=head;
+       int count=0;
+       while(p)
+       {
+           count++;
+           p=p->next;
+       }
+       Node *q=head;
+       int c=0;
+       while(q)
+       {
+           c++;
+           if(c==count-n+1)
+           return q->data;
+           q=q->next;
+       }
+       return -1;
+       
+}
+};
