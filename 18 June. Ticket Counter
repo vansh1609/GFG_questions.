@@ -1,0 +1,41 @@
+class Solution {
+  public:
+    int distributeTicket(int N, int K) {
+        // code here
+        deque<int> q;
+        int i=0,x=0;
+        for(int i=1;i<=N;i++)
+        q.push_back(i);
+        while(!q.empty())
+        {
+            if(i%2==0)
+            {
+                int y=K;
+                while(y--)
+                {
+                    if(!q.empty())
+                    {
+                        x=q.front();
+                        q.pop_front();
+                    }
+                    
+                }
+            }
+            else
+            {
+                 int y=K;
+                while(y--)
+                {
+                    if(!q.empty())
+                    {
+                        x=q.back();
+                        q.pop_back();
+                    }
+                }   
+            }
+            i++;
+            
+        }
+        return x;
+    }
+};
