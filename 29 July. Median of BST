@@ -1,0 +1,20 @@
+void inorder(struct Node *root,vector<int> &v)
+{
+    if(root)
+    {
+        inorder(root->left,v);
+        v.push_back(root->data);
+        inorder(root->right,v);
+    }
+}
+float findMedian(struct Node *root)
+{
+      //Code here
+      vector<int> v;
+      inorder(root,v);
+      if(v.size()%2!=0)
+      return v[v.size()/2];
+      float f;
+      f=(v[v.size()/2]+v[v.size()/2-1])/2.0;
+      return f;
+}
