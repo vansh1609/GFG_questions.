@@ -1,0 +1,32 @@
+Node *insert(Node **head,Node **rear,int x)
+{
+    Node *t=new Node(x);
+    t->next=NULL;
+    if(*head==NULL)
+    *head=*rear=t;
+    else
+    {
+        (*rear)->next=t;
+        *rear=t;
+    }
+}
+Node *removeDuplicates(Node *head)
+{
+ // your code goes here
+    map<int,int> m;
+    Node *p=head,*q=head;
+    while(p)
+    {
+        m[p->data]++;
+        p=p->next;
+    }
+    map<int,int>::iterator ir=m.begin();
+    Node *head2=NULL,*rear=NULL;
+    for(;ir!=m.end();ir++)
+    {
+        insert(&head2,&rear,ir->first);
+        
+    }
+    
+    return head2;
+}
