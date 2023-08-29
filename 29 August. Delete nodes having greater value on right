@@ -1,0 +1,45 @@
+class Solution
+{
+    public:
+    void insert(Node **head,Node **rear,int data)
+    {
+        Node *temp=new Node(data);
+        if(*head==NULL)
+        *head=*rear=temp;
+        else
+        {
+            (*rear)->next=temp;
+            *rear=temp;
+        }
+    }
+    Node *compute(Node *head)
+    {
+        // your code goes here
+        Node *head2=NULL,*rear=NULL;
+        vector<int> v;
+        while(head)
+        {
+            v.push_back(head->data);
+            head=head->next;
+        }
+        for(int i=0;i<v.size()-1;i++)
+        {
+            bool b=true;
+            for(int j=i+1;j<v.size();j++)
+            {
+                if(v[j]>v[i])
+                {
+                    b=false;
+                    break;
+                }
+            }
+            if(b)
+            insert(&head2,&rear,v[i]);
+        }
+        insert(&head2,&rear,v[v.size()-1]);
+        return head2;
+        
+    }
+    
+};
+   
