@@ -1,0 +1,33 @@
+int countn(Node *head)
+{
+    int count=0;
+    while(head)
+    {
+        count++;
+        head=head->next;
+    }
+    return count;
+}
+Node* deleteNode(Node *head,int x)
+{
+    //Your code here
+    int count=countn(head);
+    if(x==1)
+    {
+        head=head->next;
+        return head;
+    }
+    Node *p=head,*q=NULL;
+    int c=0;
+    while(p)
+    {
+        c++;
+        if(c==x)
+        break;
+        q=p;
+        p=p->next;
+       
+    }
+    q->next=p->next;
+    return head;
+}
