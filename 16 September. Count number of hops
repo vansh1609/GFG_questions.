@@ -1,0 +1,22 @@
+class Solution
+{
+    public:
+    //Function to count the number of ways in which frog can reach the top.
+    long long count(int i,int n,vector<long long> &v)
+    {
+        if(i>n)
+        return 0;
+        if(i==n)
+        return 1;
+        if(v[i]!=-1)return v[i];
+        long long step1=0,step2=0,step3=0;
+        return v[i]=(count(i+1,n,v)+count(i+2,n,v)+count(i+3,n,v))%1000000007;
+    }
+    long long countWays(int n)
+    {
+        vector<long long> v(n+1,-1);   
+        // your code here
+        return count(0,n,v);
+        
+    }
+};
