@@ -1,0 +1,30 @@
+class Solution
+{
+    public:
+    //Function to find position of first set bit in the given number.
+    string binary(int n)
+    {
+        string s="";
+        while(n)
+        {
+            s+=to_string(n%2);
+            n/=2;
+        }
+        reverse(s.begin(),s.end());
+        return s;
+    }
+    unsigned int getFirstSetBit(int n)
+    {
+        // Your code here
+        string s=binary(n);
+        // cout<<s<<" ";
+        reverse(s.begin(),s.end());
+        int index=0;
+        int i=s.find('1');
+        if(i!=-1)
+        {
+            index=i+1;
+        }
+        return index;
+    }
+};
