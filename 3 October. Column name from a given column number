@@ -1,0 +1,16 @@
+class Solution{
+    public:
+    string colName (long long int n)
+    {
+        string ans; // to store the result
+        
+        while (n > 0) {
+            n--;
+            ans.push_back('A' + n % 26);
+            n /= 26;
+        }
+        
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
