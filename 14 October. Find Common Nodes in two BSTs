@@ -1,0 +1,30 @@
+class Solution
+{
+    public:
+    //Function to find the nodes that are common in both BST. 
+    void inorder(Node *root,vector<int> &v)
+    {
+        if(root)
+        {
+            inorder(root->left,v);
+            v.push_back(root->data);
+            inorder(root->right,v);
+        }
+    }
+    vector <int> findCommon(Node *root1, Node *root2)
+    {
+     //Your code here
+     vector<int> v1,v2,v;
+     inorder(root1,v1);
+     inorder(root2,v2);
+     map<int,int> m;
+     for(int i=0;i<v1.size();i++)
+     m[v1[i]]++;
+     for(int i=0;i<v2.size();i++)
+     {
+         if(m[v2[i]]!=0)
+         v.push_back(v2[i]);
+     }
+     return v;
+    }
+};
