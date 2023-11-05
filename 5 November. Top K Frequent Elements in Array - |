@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    vector<int> topK(vector<int>& nums, int k) 
+    {
+        // Code here
+        vector<int> ans;
+        map<int, int> mp;
+        for (int i : nums) mp[i]++;
+        vector<pair<int, int>> cnt;
+        for (auto i : mp)
+        {
+            cnt.push_back(make_pair(i.first,i.second));
+        }
+        sort(cnt.begin(), cnt.end(), [&](pair<int, int>& a, pair<int, int>& b)
+        {
+            if (a.second == b.second) return a.first > b.first;
+            return a.second > b.second;
+        });
+        
+        for (int i = 0; i < k; ++i) ans.push_back(cnt[i].first);
+        return ans;
+    }
+};
