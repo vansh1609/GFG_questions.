@@ -1,0 +1,35 @@
+class Solution{
+  public:
+    vector<int> a;
+    map<int,int> b;
+    void inorder(Node *root)
+    {
+        if(root)
+        {
+            inorder(root->left);
+            a.push_back(root->data);
+            if(!root->left && !root->right)  
+            { 
+                b[root->data] = -1;
+            }
+            inorder(root->right);
+        }
+    }
+    
+    bool isDeadEnd(Node *root)
+    {
+        inorder(root);
+        
+        if(a[0] == 1 && b[1] == -1) return true;
+        
+        for(int i = 1; i < a.size()-1; i++)
+        {
+            if(a[i]-a[i-1] == 1 && a[i+1]-a[i] == 1 && b[a[i]] == -1)
+            {
+                
+                return true;
+            }
+        }
+        return false;
+    }
+};
