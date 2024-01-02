@@ -1,0 +1,23 @@
+class Solution{
+    public:    
+    long long int maxSumWithK(long long int a[], long long int n, long long int k) 
+    {
+        long long maxi, sum = 0;
+        set<long long>pq;
+        vector<int>ans(k, 0);
+        for(int i = 0; i < k; i++){
+            sum += a[i];
+            ans[i] = sum;
+        }
+        maxi = sum;
+        pq.insert(0);
+        for(int i = k; i < n; i++){
+            maxi = max(maxi, sum - *pq.begin());
+            sum += a[i];
+            pq.insert(ans[(i - k)%k]);
+            ans[(i - k)%k] = sum;
+        }
+        maxi = max(maxi, sum - *pq.begin());
+        return maxi;
+    }
+};
