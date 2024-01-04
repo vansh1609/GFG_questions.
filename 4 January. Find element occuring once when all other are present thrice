@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    int singleElement(int arr[] ,int N) {
+        // code here
+        map<int,int> m;
+        for(int i=0;i<N;i++)
+        m[arr[i]]++;
+        map<int,int>::iterator ir=m.begin();
+        for(;ir!=m.end();ir++)
+        {
+            if(ir->second==1)
+            return ir->first;
+        }
+        return -1;
+    }
+};
