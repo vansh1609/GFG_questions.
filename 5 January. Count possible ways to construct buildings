@@ -1,0 +1,21 @@
+class Solution{
+	public:
+	int TotalWays(int N)
+	{
+	    // Code here
+	     if (N == 1) return 4;
+        if (N == 2) return 9;
+
+        long mod = 1000000007;
+        int prevTwo = 2, prevOne = 3, present = 0;
+
+        for (int i = 3; i <= N; i++) {
+            present = (int) ((prevOne + prevTwo + mod) % mod);
+            prevTwo = prevOne;
+            prevOne = present;
+        }
+
+        long total = ((present % mod) * (present % mod)) % mod;
+        return (int)total;
+	}
+};
