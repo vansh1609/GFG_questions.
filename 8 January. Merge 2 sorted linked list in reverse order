@@ -1,0 +1,41 @@
+class Solution
+{
+    public:
+    
+    void insert(int x,Node **head,Node **rear)
+{
+    Node *temp=new Node();
+    temp->data=x;
+    temp->next=NULL;
+    if(*head==NULL)
+    {
+        *head=*rear=temp;
+    }
+    else
+    {
+        (*rear)->next=temp;
+        *rear=(*rear)->next;
+    }
+}
+struct Node * mergeResult(Node *node1,Node *node2)
+{
+    // your code goes here
+    vector<int> v;
+    while(node1)
+    {
+        v.push_back(node1->data);
+        node1=node1->next;
+    }
+    while(node2)
+    {
+        v.push_back(node2->data);
+        node2=node2->next;
+    }
+    sort(v.begin(),v.end(),greater<int>());
+    Node *head=NULL,*rear=NULL;
+    // cout<<v.size();
+    for(int i=0;i<v.size();i++)
+    insert(v[i],&head,&rear);
+    return head;
+}
+};
