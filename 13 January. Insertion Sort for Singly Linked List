@@ -1,0 +1,24 @@
+class Solution
+{
+    public:
+    Node* insertionSort(struct Node* head)
+    {
+        //code here
+        vector<int> v;
+        Node *p=head,*q=head;
+        while(head)
+        {
+            v.push_back(head->data);
+            head=head->next;
+        }
+        sort(v.begin(),v.end());
+        int i=0;
+        while(p)
+        {
+            p->data=v[i++];
+            p=p->next;
+        }
+        return q;
+    }
+    
+};
