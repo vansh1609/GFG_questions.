@@ -1,0 +1,20 @@
+class Solution
+{   
+    public:
+    vector<int> repeatedRows(vector<vector<int>> &matrix, int M, int N) 
+    { 
+        // Your code here
+        vector<int> result;
+        map<vector<int> ,int> mp;
+        int i=0;
+       for(auto it : matrix){
+           if(mp.find(it) != mp.end()){
+                result.push_back(i);
+           }
+           else mp[it]=i;
+           i++;
+       }
+       return result;
+      
+    } 
+};
