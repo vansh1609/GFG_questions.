@@ -1,0 +1,21 @@
+class Solution{
+public:
+     vector<vector<int>> dp;
+    int solve(int m, int n)
+    {
+        if(m == 0 || n ==1)
+            return m;
+        int ans = 0;
+        if(dp[m][n] != -1)
+            return dp[m][n];
+        for(int i = 1; i <= m; i++)
+        {
+            ans = ans+solve(i/2,n-1);
+        }
+        return dp[m][n]=ans;
+    }
+    int numberSequence(int m, int n){
+        dp = vector<vector<int>>(105,vector<int>(105,-1));
+        return solve(m,n);
+    }
+};
