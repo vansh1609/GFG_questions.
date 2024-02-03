@@ -1,0 +1,23 @@
+class Solution
+{
+    public:
+    long mod = 1000000007;
+ // In case u r looking for different approaches
+        void solve(Node* root,long long unsigned int&sum,int &index,int &J){
+            if(!root) return;
+            solve(root->next,sum,index,J);
+            int var = 0;
+            root->data ? var = 1 : var = 0; 
+            sum= sum%mod + ((var)*J)%mod;
+            J = (J*2)%mod;
+        }
+        long long unsigned int decimalValue(Node *head)
+        {
+           // Your Code Here
+           long long unsigned int sum = 0;
+           int index = 0;
+           int J = 1;
+           solve(head,sum,index,J);
+           return sum%mod;
+        }
+};
