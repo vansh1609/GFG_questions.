@@ -1,0 +1,42 @@
+class Solution{
+public:
+bool sameFreq(string s)
+{
+    
+    vector<int>v(26);
+    for(auto it:s){
+        v[it-'a']+=1;
+    }
+    
+    //sort the char frequency vector
+    sort(v.begin(),v.end());
+    
+    //Increment i till we get positive value
+    int i=0;
+    while(i<26 && v[i]==0){
+        i++;
+    }
+    
+    int val1=v[i],val2=v[i],cnt1=0,cnt2=0;
+    while(i<26 && val1==v[i]){
+        cnt1++;
+        i++;
+    }
+    
+    if(i<26)val2=v[i];
+    while(i<26 && v[i]==val2){
+        cnt2++;
+        i++;
+    }
+    //if vector has 3 values i!=26 and return 0
+    //if 2 value equal return 1;
+    // if differnce equal 1 means after remove of one char val1==val2 so return 1;
+    // if first value is 1 and its frequency is 1 then we can remove it so return 1;
+    // otherwise return 0;
+    if(i!=26)return 0;
+    if(val1==val2)return 1;
+    if(val2-val1==1 && cnt2==1)return 1;
+    if(val1==1 && cnt1==1)return 1;
+    return 0;
+}
+};
