@@ -1,0 +1,19 @@
+class Solution{
+  public:
+    char nthCharacter(string s, int r, int n) {
+        //code here
+        while(r--) {
+            string str = "";
+            for(auto it : s) {
+                if(it == '0')
+                    str += "01";
+                else
+                    str += "10";
+                if(str.size() > n)
+                    break;
+            }
+            s = str;
+        }
+        return s[n];
+    }
+};
