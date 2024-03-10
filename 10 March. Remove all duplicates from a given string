@@ -1,0 +1,16 @@
+class Solution{
+public:
+    string removeDuplicates(string str) {
+        // code here
+        string output="";
+        map<char,int> mp;
+        
+        for(auto i:str){
+            mp[i]++;
+            if(mp[i]==1){
+                output+=i;
+            }
+        }
+        return output;
+    }
+};
