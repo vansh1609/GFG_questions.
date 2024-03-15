@@ -1,0 +1,45 @@
+class Solution
+{
+    public:
+    // your task is to complete this function
+    void sort(Node **head)
+    {
+         // Code here
+         struct Node *p;
+         p=(*head);
+         struct Node *s;
+         struct Node *pq;
+         s=p;
+         
+         if(p->next==NULL)
+         {
+             //Do nothing
+         }
+         else
+         {
+         struct Node *q;
+         q=*head;
+         int cnt=0;
+         while(q->next!=NULL)
+         {
+             q = q->next;
+         }
+         while(p!=q)
+         {
+             if(cnt==0)
+             {
+                 pq=p;
+                 p=p->next;
+                 cnt=1;
+             }
+             else
+             {
+                 pq->next = p->next;
+                 p->next = q->next;
+                 q->next = p;
+                 p = pq->next;
+                 cnt = 0;
+             }
+         }
+    }}
+};
